@@ -8,6 +8,5 @@ The components that has been used in building up this automation framework was :
 -Cucumber BDD
 -JUnit
 -Intellij
--Maven
 -Chrome
 
