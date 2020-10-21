@@ -6,7 +6,8 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        features = "src/test/java/Features/herokuappTest.feature" ,
-        glue = "src/test/java")
+        features = "src/test/java/Features" ,
+        plugin = "pretty",
+        dryRun = false)
 public class Runner {
 }

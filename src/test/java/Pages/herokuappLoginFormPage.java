@@ -53,8 +53,5 @@ public class herokuappLoginFormPage {
 
     public void verifyUserAuthorization(){
         Assert.assertTrue(messageHeader.isDisplayed());
-        System.out.println(messageHeader.getText().trim());
-        Assert.assertTrue(expectedHeader.equals(messageHeader.getText().trim()));
-
     }
 }
