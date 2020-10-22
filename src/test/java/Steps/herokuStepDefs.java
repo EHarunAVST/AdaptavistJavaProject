@@ -1,5 +1,6 @@
 package Steps;
 
+import Pages.herokuappJSAlertPage;
 import Pages.herokuappLoginFormPage;
 import Pages.herokuappSecurePage;
 import io.cucumber.java.After;
@@ -16,6 +17,7 @@ public class herokuStepDefs {
     private WebDriver driver;
     private herokuappLoginFormPage loginpage;
     private herokuappSecurePage securePage;
+    private herokuappJSAlertPage alertPage;
 
     @Before
     public void startUp(){
@@ -32,10 +34,17 @@ public class herokuStepDefs {
         }
     }
 
-    @Given("I navigate to herokuapp website")
-    public void navigateToWebsite(){
-        loginpage = new herokuappLoginFormPage(driver);
-        loginpage.navigateToWebsite();
+    @Given ("I navigate to herokuapp '(.*)' website")
+    public void navigateToJSAlertWebsite(String site){
+        if(site.equals("alert")){
+            alertPage = new herokuappJSAlertPage(driver);
+            alertPage.navigateToWebsite();
+        }
+        else if(site.equals("login")){
+            loginpage = new herokuappLoginFormPage(driver);
+            loginpage.navigateToWebsite();
+        }
+
     }
 
     @When("^I insert '(.*)' user credentials$")
@@ -48,9 +57,29 @@ public class herokuStepDefs {
         }
     }
 
+    @When("^I click JS '(.*)' button$")
+    public void clickJSButton(String jsAlertButton){
+        alertPage.clickAlertButton(jsAlertButton);
+    }
+
     @And("I click login button")
     public void clickLogin(){
         loginpage.clickLoginButton();
+    }
+
+    @And("^I click '(.*)' button on '(.*)' warning popout$")
+    public void handleBrowserAlert(String buttonType, String alertType){
+        alertPage.clickAlertMessage(alertType,buttonType);
+    }
+
+    @And("^I insert '(.*)' as input value$")
+    public void insertInputOnAlert(String input){
+        alertPage.insertInputField(input);
+    }
+
+    @Then("^Result display '(.*)'$")
+    public void checkResult(String message){
+        alertPage.checkResultDisplay(message);
     }
 
     @Then ("^I '(.*)' logon into herokuapp account$")
