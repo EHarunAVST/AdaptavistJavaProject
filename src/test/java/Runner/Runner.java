@@ -1,4 +1,4 @@
-package Core;
+package Runner;
 
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
@@ -8,6 +8,6 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         features = "src/test/java/Features" ,
         plugin = "pretty",
-        dryRun = false)
+        glue = {"Steps","Pages", "Runner"})
 public class Runner {
 }
