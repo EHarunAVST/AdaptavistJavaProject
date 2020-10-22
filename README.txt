@@ -11,9 +11,12 @@ The components that has been used in building up this automation framework was :
 -Chrome
 -Maven
 
-This solution contains several automation test cases against Herokuapp login page as below:
+This solution contains several automation test cases against severals Herokuapp scenarios as below:
 - Login with valid credentials
 - Login with invalid credentials
+- Test the JS alert button
+- Test the JS prompt button
+- Test the JS confirm button
 
 Step to run:
 Please use 'mvn clean install' command from the terminal in order to download dependencies, build, and run the test
