@@ -17,6 +17,8 @@ This solution contains several automation test cases against severals Herokuapp 
 - Test the JS alert button
 - Test the JS prompt button
 - Test the JS confirm button
+- Test writing text inside iframe
+- Test selecting editor toolbar
 
 Step to run:
 Please use 'mvn clean install' command from the terminal in order to download dependencies, build, and run the test
