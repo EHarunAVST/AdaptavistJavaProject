@@ -30,7 +30,7 @@ public class herokuappLoginFormPage extends herokuappBasePage{
     }
 
     public void navigateToWebsite(){
-        //Opening herokuapp website
+        //Opening herokuapp login website
         driver.get("http://the-internet.herokuapp.com/login");
     }
 

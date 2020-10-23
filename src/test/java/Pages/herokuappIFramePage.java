@@ -34,11 +34,12 @@ public class herokuappIFramePage extends herokuappBasePage{
     }
 
     public void navigateToWebsite(){
-        //Opening herokuapp website
+        //Opening herokuapp iframe website
         driver.get("http://the-internet.herokuapp.com/iframe");
     }
 
     public void writeTextInIFrame(String text){
+        //Writing input into textfield
         driver.switchTo().frame(textfieldIframe);
         inputTextfield.clear();
         inputTextfield.sendKeys(text);
@@ -46,6 +47,7 @@ public class herokuappIFramePage extends herokuappBasePage{
     }
 
     public void clickToolbar(String toolbarType){
+        //Click specific function on the toolbar
         if(toolbarType.equals("bold")){
             boldButton.click();
         }
@@ -55,6 +57,7 @@ public class herokuappIFramePage extends herokuappBasePage{
     }
 
     public void checkSelectedToolbar(String toolbarType){
+        //Check selected toolbar on the bottom navigation bar
         String displayStatus;
         switch (toolbarType){
             case "paragraph":
@@ -72,6 +75,7 @@ public class herokuappIFramePage extends herokuappBasePage{
     }
 
     public void verifyText(String text){
+        //Verify the text inserted into the iframe
         driver.switchTo().frame(textfieldIframe);
         Assert.assertTrue(text.equals(inputTextfield.getText()));
         driver.switchTo().defaultContent();

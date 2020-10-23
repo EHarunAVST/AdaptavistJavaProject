@@ -30,6 +30,7 @@ public class herokuappJSAlertPage extends herokuappBasePage{
     }
 
     public void clickAlertButton(String jsAlertType){
+        //Clicking button in the page
         switch (jsAlertType){
             case "alert":
                 JSAlertButton.click();
@@ -46,6 +47,7 @@ public class herokuappJSAlertPage extends herokuappBasePage{
     }
 
     public void clickAlertMessage(String alertType, String buttonType){
+        //Perform specific action on the browser warning alert
         if (alertType.equals("JSAlert")){
             if (buttonType.equals("ok")){
                 driver.switchTo().alert().accept();
@@ -70,11 +72,13 @@ public class herokuappJSAlertPage extends herokuappBasePage{
     }
 
     public void checkResultDisplay(String message){
+        //Check result in the page based on action on the browser warning alert
         driver.switchTo().defaultContent();
         Assert.assertTrue(message.equals(resultDisplay.getText()));
     }
 
     public void insertInputField(String input){
+        //Insert value on the browser warning alert textfield
         driver.switchTo().alert().sendKeys(input);
     }
 }
