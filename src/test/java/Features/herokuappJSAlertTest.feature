@@ -1,13 +1,13 @@
 Feature: Herokuapp javascript alert
 
   Scenario: Clicking JS alert button
-    Given I navigate to herokuapp alert website
+    Given I navigate to herokuapp 'alert' website
     When I click JS 'alert' button
     And I click 'ok' button on 'JSAlert' warning popout
     Then Result display 'You successfuly clicked an alert'
 
   Scenario: Clicking OK button on JS confirm alert
-    Given I navigate to herokuapp alert website
+    Given I navigate to herokuapp 'alert' website
     When I click JS 'confirm' button
     And I click 'ok' button on 'JSConfirm' warning popout
     Then Result display 'You clicked: Ok'

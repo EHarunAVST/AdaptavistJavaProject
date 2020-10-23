@@ -1,5 +1,6 @@
 package Steps;
 
+import Pages.herokuappIFramePage;
 import Pages.herokuappJSAlertPage;
 import Pages.herokuappLoginFormPage;
 import Pages.herokuappSecurePage;
@@ -18,6 +19,7 @@ public class herokuStepDefs {
     private herokuappLoginFormPage loginpage;
     private herokuappSecurePage securePage;
     private herokuappJSAlertPage alertPage;
+    private herokuappIFramePage iframePage;
 
     @Before
     public void startUp(){
@@ -34,7 +36,7 @@ public class herokuStepDefs {
         }
     }
 
-    @Given ("I navigate to herokuapp '(.*)' website")
+    @Given ("^I navigate to herokuapp '(.*)' website$")
     public void navigateToJSAlertWebsite(String site){
         if(site.equals("alert")){
             alertPage = new herokuappJSAlertPage(driver);
@@ -43,6 +45,10 @@ public class herokuStepDefs {
         else if(site.equals("login")){
             loginpage = new herokuappLoginFormPage(driver);
             loginpage.navigateToWebsite();
+        }
+        else if(site.equals("iframe")){
+            iframePage = new herokuappIFramePage(driver);
+            iframePage.navigateToWebsite();
         }
 
     }
@@ -62,6 +68,11 @@ public class herokuStepDefs {
         alertPage.clickAlertButton(jsAlertButton);
     }
 
+    @When("^I write '(.*)' in the text iframe$")
+    public void writeText(String text){
+        iframePage.writeTextInIFrame(text);
+    }
+
     @And("I click login button")
     public void clickLogin(){
         loginpage.clickLoginButton();
@@ -75,6 +86,11 @@ public class herokuStepDefs {
     @And("^I insert '(.*)' as input value$")
     public void insertInputOnAlert(String input){
         alertPage.insertInputField(input);
+    }
+
+    @And("^I click '(.*)' on toolbar$")
+    public void clickToolbar(String toolbarType){
+        iframePage.clickToolbar(toolbarType);
     }
 
     @Then("^Result display '(.*)'$")
@@ -91,5 +107,15 @@ public class herokuStepDefs {
         else{
             securePage.verifyUserAuthorization();
         }
+    }
+
+    @Then("^result will show '(.*)' was selected$")
+    public void verifySelectedToolbar(String toolbarType){
+        iframePage.checkSelectedToolbar(toolbarType);
+    }
+
+    @And("^verify '(.*)' are written in iframe$")
+    public void verifyTextInput(String text){
+        iframePage.verifyText(text);
     }
 }
