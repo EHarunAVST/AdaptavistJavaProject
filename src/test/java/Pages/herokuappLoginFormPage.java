@@ -4,20 +4,22 @@ import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.How;
+import org.openqa.selenium.support.PageFactory;
 
-public class herokuappLoginFormPage extends herokuappBasePage{
+public class herokuappLoginFormPage {
 
-    @FindBy(how = How.CSS, using = "#username")
+    WebDriver driver;
+
+    @FindBy(id = "username")
     private WebElement usernameField ;
 
-    @FindBy(how = How.CSS, using = "#password")
+    @FindBy(id = "password")
     private WebElement passwordField ;
 
-    @FindBy(how = How.CSS, using = "i.fa-sign-in")
+    @FindBy(css = "i.fa-sign-in")
     private WebElement loginButton ;
 
-    @FindBy(how = How.CSS, using = "#flash")
+    @FindBy(css = "#flash")
     private WebElement messageHeader ;
 
     private String username = "tomsmith";
@@ -25,8 +27,9 @@ public class herokuappLoginFormPage extends herokuappBasePage{
     private String invalidPassword = "WrongPassword";
     private String expectedHeader = "Your password is invalid!\n"+"×";
 
-    public herokuappLoginFormPage(WebDriver commondriver) {
-        super(commondriver);
+    public herokuappLoginFormPage(WebDriver driver) {
+        this.driver = driver;
+        PageFactory.initElements(driver,this);
     }
 
     public void navigateToWebsite(){
@@ -46,10 +49,9 @@ public class herokuappLoginFormPage extends herokuappBasePage{
         passwordField.sendKeys(invalidPassword);
     }
 
-    public herokuappSecurePage clickLoginButton(){
+    public void clickLoginButton(){
         //Clicking login button on login page
         loginButton.click();
-        return new herokuappSecurePage(driver);
     }
 
     public void verifyUserAuthorization(){
