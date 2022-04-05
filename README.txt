@@ -5,8 +5,8 @@ Please download chromedriver in here https://chromedriver.chromium.org/downloads
 The components that has been used in building up this automation framework was :
 -Java langugage
 -Selenium Webdriver
--Cucumber BDD
 -JUnit
+-PageFactory
 -Intellij
 -Chrome
 -Maven
